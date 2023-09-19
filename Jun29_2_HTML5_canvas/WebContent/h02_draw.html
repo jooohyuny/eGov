@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+canvas{
+	border : black solid 3px;
+}
+</style>
+<script type="text/javascript" src="jQuery.js"></script>
+<script type="text/javascript">
+	$(function(){
+		var paper = document.getElementById("cv")
+		var pen = paper.getContext("2d"); // paper에 2d그림 그릴 펜
+
+		pen.fillRect(10,20,30,40); //x,y,w,h
+		pen.fillStyle = "#EA80FC"; //면 색
+		pen.fillRect(40,60,100,100);
+		
+		// 선
+		pen.strokeStyle ="blue"; // 선 색
+		pen.lineWidth = 5; // 선 두께
+		pen.beginPath(); // 지금부터 새로운 선 정보
+		pen.moveTo(100,100); // 정보 넣어주기
+		pen.lineTo(200,200); // 정보 넣어주기
+		pen.closePath(); // 선 정보 끝
+		pen.stroke(); // 실제 그리기
+		
+		// 이미지 파일 그리기
+		var a = new Image();
+		a.src = "messi_01.png";
+		// 용량이 크거나 외부서버에 있으면??
+		a.onload = function(){
+			pen.drawImage(a,400,350, 50, 100);
+		};
+		
+		pen.save();	// 현재 펜 상태 저장(그림자, 색깔, ...)
+		
+		// 그림자
+		pen.shadowOffsetX = 10;
+		pen.shadowOffsetY = 15;
+		pen.shadowBlur = 20;
+		pen.shadowColor = "#43a047";
+		
+		pen.fillRect(300,50,100,100);
+
+		pen.restore(); // 저장된 펜 상태 불러오기
+		
+		pen.fillStyle = "#FFFF00";
+		pen.fillRect(300,50,100,100);
+		
+	});
+</script>
+</head>
+<body>
+	<canvas id="cv" width="500px" height="500px"></canvas>
+</body>
+</html>

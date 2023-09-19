@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+  <environments default="development">
+    <environment id="development">
+      <transactionManager type="JDBC"/>
+      <dataSource type="POOLED">
+        <property name="driver" value="oracle.jdbc.driver.OracleDriver"/>
+        <property name="url" value="jdbc:oracle:thin:@195.168.9.85:1521:xe"/>
+        <property name="username" value="yun"/>
+        <property name="password" value="yun"/>
+      </dataSource>
+    </environment>
+  </environments>
+  <mappers>
+    <mapper resource="com/yun/gbraucp/member/memberMapper.xml"/> 
+    <mapper resource="com/yun/gbraucp/sns/snsMapper.xml"/> 
+  </mappers>
+</configuration>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+img{
+	position: fixed;
+}
+</style>
+<script type="text/javascript" src="jQuery.js"></script>
+<script type="text/javascript">
+	// jQuery 기본 문법 : 
+	//	이벤트 강제 발생
+	//	$(선택자).trigger("이벤트명");
+	$(function(){
+		// keydown, keyup 사이에 키보드 기능이 발동
+		$("#i1").keydown(function(e){
+			// alert(e.keyCode); // 키보드 아스키코드 값
+			$("h1").text("keydown");
+			if(e.keyCode == 65){
+				return false;
+			}
+		});
+		$("#i1").keyup(function(){
+			$("h1").text("keyup");
+		});
+		$("button").click(function(){
+			var i2Val = $("#i2").val();
+			alert(i2Val);
+			$("#i2").val("");
+		});
+		$("#i2").keyup(function(e){
+			if (e.keyCode == 13) {
+			// 이벤트 강제 발생
+			//	$(선택자).trigger("이벤트명");
+				$("button").trigger("click");
+			}
+		});
+		var l = 8;	var t = 8;
+		$("body").keydown(function(e){
+			if(e.keyCode == 37){
+				l-= 5;
+				$("img").css("left",l + "px");
+			} else if (e.keyCode == 38) {
+				t-= 5;
+				$("img").css("top",t + "px");
+			} else if (e.keyCode == 39) {
+				l+= 5;
+				$("img").css("left",l + "px");
+			} else if (e.keyCode == 40) {
+				t+= 5;
+				$("img").css("top",t + "px");
+			}
+		});
+	});
+</script>
+</head>
+<body>
+	<img src="kjw0629.png">
+	<input id ="i1">
+	<br>
+	<h1>ㅋ</h1>
+	<hr>
+	<input id="i2"><button>버튼</button>
+</body>
+</html>
+
+
+
+
+
+

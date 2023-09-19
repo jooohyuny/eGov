@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+canvas{
+	border : black solid 3px;
+}
+div{
+/* 	color: red;
+	color: #FF0000;
+	color: rgb(255,0,0);*/	
+	color: rgba(255,0,0, 0.5);
+	
+}
+</style>
+<script type="text/javascript" src="jQuery.js"></script>
+<script type="text/javascript">
+	function getRandomColor(){
+		var r = Math.random() * 255;	
+		var g = Math.random() * 255;	
+		var b = Math.random() * 255;	
+		
+		return "rgb(" + r + "," + g + "," + b +")";
+	}
+	
+	$(function(){
+		var paper = document.getElementById("cv")
+		var pen = paper.getContext("2d"); // paper에 2d그림 그릴 펜
+
+		setInterval(function(){
+			pen.save(); // 기본 펜 상태 저장(그림자 없는)
+			
+			pen.fillStyle = "#00000011";
+			pen.fillRect(0,0,500,500);	// 투명한 검정으로 전체를 덮고
+			
+			pen.shadowOffsetX = 0;
+			pen.shadowOffsetY = 0;
+			pen.shadowBlur = 20;
+			pen.shadowColor = "white"; // 그림자 세팅
+			
+			var x = Math.random() * 500; 
+			var y = Math.random() * 500;
+			pen.fillStyle= getRandomColor();
+			pen.fillRect(x,y,12,12); //랜덤한 위치에 랜덤한 색깔로 네모 하나 그리고
+			
+			pen.restore(); // 펜 상태 불러오기(기본상태(그림자없는))
+		}, 30);
+	});
+</script>
+</head>
+<body>
+	<canvas id="cv" width="500px" height="500px"></canvas>
+</body>
+</html>

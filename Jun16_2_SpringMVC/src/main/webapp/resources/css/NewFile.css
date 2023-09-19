@@ -1,0 +1,8 @@
+@charset "UTF-8";
+
+input {
+	border : red solid 2px;
+	background-color: #BBDEFB;
+	width : 100px;
+	height : 80px;
+}

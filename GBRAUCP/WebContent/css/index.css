@@ -1,0 +1,60 @@
+@charset "EUC-KR";
+@font-face{
+	font-family: "p";
+	src : url("pils.ttf");
+}
+@font-face{
+	font-family: "v";
+	src : url("vitrocore.ttf");
+}
+@font-face{
+	font-family: "m";
+	src : url("dmayo.ttf");
+}
+
+a{
+	text-decoration: none;
+}
+
+body{
+	margin : 0px; padding :0px; font-family: m;
+	background-color: #D7CCC8;
+}
+table{
+	border-spacing: 0px;
+}
+
+#siteTitleArea{
+	position: fixed;	width: 100%;
+}
+#siteTitle{
+	width:1800px;		height: 75px;
+}
+#siteTitle a{
+	color:white;	font-weight:900;	font-family: "m";
+	font-size: 27pt;	text-shadow: 2px 2px 2px #FFB300;
+}
+#siteMenu{
+	border-top: #616161 solid 2px;	border-bottom: #616161 solid 2px; 
+	height: 40px;	width: 1200px;
+}
+#siteMenu td{
+	width: 33%;
+}
+#resultDiv{
+	position: fixed;	top:25px;	right:120px;
+	font-weight: 900;	font-family: "m";
+}
+
+#siteMenu a{
+	color:#C62828;	font-weight: 900;	font-size: 15pt; font-family:"m";
+}
+#siteContentArea{
+	margin-left: auto;	margin-right: auto;	width: 1200px;	padding-top: 190px;
+}
+#siteLoginArea{
+	position: fixed; font-family:"m";
+	top: 150px; right:100px;
+	width: 250px;	height: 150px;	background-color: #DCEDC8;
+	z-index: 99;
+}

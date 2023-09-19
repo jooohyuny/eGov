@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+div{
+	width:200px; height:200px;
+	background-color:#AA00FF; color:white;
+	font-size: 22pt;
+	transition: background-color 1s ease-in;
+	/*
+		ease-in	: 빨라짐
+		ease-out: 느려짐
+		linear	: 등속
+	*/
+}
+img{
+	position:fixed;
+	top: 20px;	left:600px;
+	transition: all 1s ease-out;
+}
+</style>
+<script type="text/javascript" src="jQuery.js"></script>
+<script type="text/javascript">
+
+	$(function(){
+		var timer;
+		// jQuery문법 특징: 
+		//		객체 한번 선택해서, 여러번 작업 가능	
+		//		getter/setter 따로없고 파라메터 갯수로
+		$("#b1").click(function(){
+			// $(선택자).css("속성명","값");
+			$("div").css("background-color","#80CBC4");			
+			$("div").css("color","#283593");	
+			
+			$("div").css("width","120px").css("height","50px");
+		});
+		$("#b2").click(function(){
+			var bg = $("div").css("background-color");
+			alert(bg);
+		});
+		$("#b3").click(function(){
+			var bg = $("input").val();
+			$("div").css("background-color",bg);
+			$("input").val("");
+		});
+		$("#b4").click(function(){
+			// setTimeout(함수, 시간(ms));
+			// 시간만큼 지나고 함수 자동호출
+			setTimeout(function(){
+				$("img").css("top","200px")
+				$("img").css("left","200px")
+			},1500);
+		});
+		$("#b5").click(function(){
+			// Math.random() : 0.0 ~ 0.999999999999
+			
+			// setInterval(함수, 시간(ms));
+			//		시간마다 함수 자동호출
+			timer = setInterval(function(){
+				var t = Math.random()*1080;
+				var l = Math.random()*1920;
+				$("img").css("top",t+"px");
+				$("img").css("left",l+"px");
+			},500);
+		});
+		$("#b6").click(function(){
+			clearInterval(timer);
+		});
+	});
+</script>
+</head>
+<body>
+	<div>ㅋㅋㅋㅋ</div>
+	<hr>
+	<button id="b1">버튼1</button>
+	<button id="b2">버튼2</button>
+	<hr>
+	<input>
+	<button id="b3">버튼3</button>
+	<img src="kjh0626.png">
+	<hr>
+	<button id="b4">버튼4</button>
+	<button id="b5">버튼5</button>
+	<hr>
+	<button id="b6">버튼6</button>
+</body>
+</html>
+
+
+
+

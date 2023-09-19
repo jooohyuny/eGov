@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="jQuery.js"></script>
+<script type="text/javascript">
+	// 여기는 아직 <body> 나오기 전
+	// jQuery : JavaScript에서 이벤트 연결하던거를 간결하게	
+	$(function() {
+		// id가 b1인거 클릭하면 aaa함수 불러줌
+		// id가 b1인거의
+		// click이벤트에
+		// aaa함수 연결해두기
+		$("#b1").click(function aaa(){
+			alert("A");
+			
+			$("#b2").click(function bbb(){
+				alert("B");
+			});
+		});
+	}); // body의 onload에 해당(body 나오고나 서)
+</script>
+</head>
+<body>
+	<button id="b1">버튼1</button>
+	<button id="b2">버튼2</button>
+</body>
+</html>
+

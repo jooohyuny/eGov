@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+canvas{
+	border : black solid 3px;
+}
+</style>
+<script type="text/javascript" src="http://195.168.9.41:6090/socket.io/socket.io.js"></script>
+<script type="text/javascript" src="jQuery.js"></script>
+<script type="text/javascript">
+	$(function(){
+		var socket = io.connect("http://195.168.9.41:6090");
+		
+		var paper = document.getElementById("cv")
+		var pen = paper.getContext("2d");
+		var ball = new Image();
+		var ballX = 185; 	var xSpd = 5;
+		var ballY = 235; 	var ySpd = 5;
+		var barX = 150;
+		var guestBarX = 150;
+		
+		socket.on("sGuestBarX",function(x){
+			guestBarX = x;
+		});
+		socket.on("sStart",function(s){
+			var t = setInterval(function(){
+				pen.save();
+				pen.fillStyle = "rgba(0,0,0,0.07)";
+				pen.fillRect(0,0,400,500);
+				ballX += xSpd;
+				ballY += ySpd;
+				
+				if (ballX >= 370 || ballX <= 0) {
+					xSpd *= -1;
+				}
+				if (ballY <=0){
+					ySpd *= -1;
+				} 
+ 				if ((ballY>=455 && ballX >=barX -15 && ballX <=barX + 85)
+ 					||(ballY <=15 && ballX >= guestBarX - 15 && ballX <= guestBarX +85)) 
+ 				{
+					ySpd *= -1;
+				}
+ 				if (ballY>= 470) {
+					clearInterval(t);
+					alert("패");
+				}
+				
+				pen.shadowBlur = 20;
+				pen.shadowColor = "red";
+				pen.drawImage(ball,ballX,ballY);
+
+				pen.shadowColor = "white";
+				pen.fillStyle = "#A1887F";
+				pen.fillRect(barX,485,100,15);
+				
+				pen.fillStyle = "#00BCD4";
+				pen.fillRect(guestBarX,0,100,15);
+				
+				pen.restore();
+			}, 20);
+		});
+		
+		ball.src = "ball.png";
+		ball.onload = function(){
+			pen.fileStyle = "black";
+			pen.fillRect(0,0,400,500);
+			pen.drawImage(ball,ballX,ballY);
+			pen.fillStyle = "#A1887F";
+			pen.fillRect(barX,485,100,15);
+			pen.fillStyle = "#00BCD4";
+			pen.fillRect(guestBarX,0,100,15);
+		}
+		
+		$("canvas").mousemove(function(e){
+			barX= e.pageX-58; 
+			socket.emit("hostBarX",(300 - barX));
+		});
+		
+		$("canvas").click(function(){
+			socket.emit("start","start");
+		});
+	});
+</script>
+</head>
+<body>
+	<canvas id="cv" width="400px" height="500px"></canvas>
+</body>
+</html>

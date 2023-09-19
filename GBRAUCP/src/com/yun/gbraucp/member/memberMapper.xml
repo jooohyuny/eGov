@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="memberMapper">
+	<delete id="bye" parameterType="com.yun.gbraucp.member.Member">
+		delete from yunwebproject_member
+		where ym_id = #{ym_id}	
+	</delete>
+	<insert id="join" parameterType="com.yun.gbraucp.member.Member">
+		insert into yunwebproject_member
+		values(#{ym_id}, #{ym_pw}, #{ym_name}, #{ym_birthday}, #{ym_addr},
+		#{ym_photo})
+	</insert>
+	<select id="login" parameterType="com.yun.gbraucp.member.Member"
+		resultType="com.yun.gbraucp.member.Member">
+		select * from yunwebproject_member where ym_id = #{ym_id}
+	</select>
+	<update id="update" parameterType="com.yun.gbraucp.member.Member">
+		update yunwebproject_member 
+		set ym_pw=#{ym_pw}, ym_name=#{ym_name}, ym_addr=#{ym_addr}, ym_photo=#{ym_photo}
+		where ym_id=#{ym_id}
+	</update>
+</mapper>

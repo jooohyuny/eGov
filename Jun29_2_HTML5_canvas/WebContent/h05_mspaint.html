@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+canvas{
+	border : black solid 3px;
+}
+</style>
+<script type="text/javascript" src="http://195.168.9.41:3456/socket.io/socket.io.js"></script>
+<script type="text/javascript" src="jQuery.js"></script>
+<script type="text/javascript">
+	$(function(){
+		var socket = io.connect("http://195.168.9.43:5634");
+		
+		var paper = document.getElementById("cv");
+		var pen = paper.getContext("2d");
+		// var cvOffsetLeft = $("canvas").offset().left + 3;
+		// var cvOffsetTop = $("canvas").offset().top + 3;
+		var draw = false;
+		var startX =0;	var startY =0;	var endX =0;	var endY =0;
+		pen.lineWidth = 10;
+		// -----------------------------------------
+		socket.on("sDrawData",function(data){
+			pen.strokeStyle = data.c;
+			pen.beginPath(); 
+			pen.moveTo(data.sx,data.sy); 
+			pen.lineTo(data.ex,data.ey); 
+			pen.closePath(); 
+			pen.stroke(); 
+		});
+		
+		$("canvas").mousedown(function(e){
+			draw = true;
+			startX = e.pageX -11;		startY = e.pageY -11;
+		});
+		$("canvas").mousemove(function(e){
+			if(draw){
+				endX = e.pageX -11;		endY = e.pageY -11;
+				
+				var data = {
+						c: $("input").val(),
+						sx:startX, sy:startY, ex:endX, ey:endY };
+				
+				socket.emit("drawData",data);
+				
+				startX = endX;			startY = endY;
+			}
+		});
+		
+		$("canvas").mouseup(function(e){
+			draw = false;
+		});
+		
+		$("input").keyup(function(){
+			var c = $(this).val();
+			$(this).css("border",c + "solid 2px");
+			$(this).css("color",c);
+		});
+	});
+</script>
+</head>
+<body>
+	<canvas id="cv" width="500px" height="500px"></canvas>
+	<hr>
+	<input value = "#000000">
+</body>
+</html>
+
+
+
+
+
+
+
+
+

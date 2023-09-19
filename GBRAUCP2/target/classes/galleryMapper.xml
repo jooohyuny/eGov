@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kwon.gbraucp2.gallery.GalleryMapper">
+	<delete id="delete" parameterType="com.kwon.gbraucp2.gallery.GalleryFile">
+		delete from yunjh_gallery where yd_no=#{yd_no}
+	</delete>
+	<select id="getFile"
+	parameterType="com.kwon.gbraucp2.gallery.GalleryFile"
+	resultType="java.lang.String">
+	select yd_file
+	from yunjh_
+	where gd_no=#{gd_no}
+	</select>
+	
+	
+	<select id="get" resultType="com.kwon.gbraucp2.gallery.GalleryFile">
+		select * from yunjh_gallery
+		where yd_categoty =#{yd_category}
+		order by yd_date
+	</select>
+	
+	<insert id="upload" parameterType="com.kwon.gbraucp2.gallery.GalleryFile">
+		insert into yunjh_gallery values(yunjh_gallery_seq.nextval, #{yd_uploader},
+		#{yd_title}, #{yd_file},#{yd_category},sysdate)
+	</insert>
+
+
+</mapper>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="jQuery.js"></script>
+<script type="text/javascript">
+	$(function(){
+		var ar = [23, 1, 21];
+		var d = {name : '후추', age :3};
+		var dogs = [
+			{name : '후추', age :3},
+			{name : '소금', age :4},
+			{name : '설탕', age :5}
+		];
+		
+		// jQuery 반복문 1:
+		//	JavaScript배열 대상
+		//	클래식for문  + for-each
+		// $.each(배열,function(인덱스, 객체){});
+		$.each(dogs,function(ii,d){
+			alert(ii);
+			// alert(dogs[ii]);
+			alert(d);
+			alert(d.name);
+			alert(d.age);
+		});
+		
+		
+		
+		// 기존 JavaScript의 반복문
+		/* for (var i = 0; i < dogs.length; i++) {
+			// alert(dogs[i]);
+			alert(dogs[i].name);
+			alert(dogs[i].age);
+			
+		} */
+		
+	});
+
+</script>
+</head>
+<body>
+
+</body>
+</html>

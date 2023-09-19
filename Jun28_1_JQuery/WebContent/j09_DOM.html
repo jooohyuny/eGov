@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+div{
+	width: 300px;	height: 300px;
+	border: red solid 3px;
+}
+</style>
+<script type="text/javascript" src="jQuery.js"></script>
+<script type="text/javascript">
+	$(function() {
+		// c언어 : 저급언어 -> 하나하나 컨트롤
+		// -> 효율적인 프로그램
+		
+		// javascript(jQuery) : 고급언어 -> 자동처리
+		// -> 개발 편하게
+		// 유난떠는 느낌
+		$("button").click(function(){
+			var name = $("#nameInput").val();
+			var price = $("#priceInput").val();
+			var nameTd = $("<td></td>").text(name);
+			var priceTd = $("<td></td>").text(price);
+			var tr = $("<tr></tr>").append(nameTd,priceTd);
+			$("table").append(tr);
+			
+			$("#nameInput").val("");
+			$("#priceInput").val("");
+		});
+	});
+</script>
+</head>
+<body>
+	이름 : <input id="nameInput"><p>
+	가격 : <input id="priceInput"><p>
+	<button >등록</button>
+	<hr>
+	<table border="1">
+		<tr>
+			 <th>이름</th>
+			 <th>가격</th>
+		</tr>
+		<tr>
+			 <td>제육덮밥</td>
+			 <td>8000</td>
+		</tr>
+	</table>
+</body>
+</html>
+
+
+
+
+

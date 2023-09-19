@@ -1,0 +1,83 @@
+@charset "EUC-KR";
+#snsWriteTbl{
+	position: fixed;
+	width: 100%;
+	top: 140px;
+	left:0px;
+}
+
+#snsWriteTbl table{
+	background-color: #BCAAA4;
+	border: #6D4C41 solid 3px;
+	width: 850px;
+}
+
+#snsWriteTbl textarea{
+	resize: none;	width: 80%; height: 110px;
+	border: none;
+	background-color: transparent;
+	font-family : "m";
+	font-size : 14pt; outline:none;
+	padding: 4px;
+	color : white;
+}
+
+#snsWriteTbl button{
+	font-family : "m";
+	border: dashed; background-color: transparent;
+	color: white; font-size: 20pt;
+}
+.aMsg{
+	width: 80%;
+	background-color: #FFF9C4;
+	color:black;
+	margin: 20px;
+	border-radius: 10px;
+	box-shadow: 3px 3px 3px #FFB300;
+}
+.aMsg td{
+	padding: 10px;
+}
+.aMsg .td1{
+	width: 80px;
+}
+.aMsg img{
+	max-width: 70px;
+}
+.aMsg .td2{
+	font-family: "m";
+	font-size: 13pt;
+}
+.aMsg .td3{
+	font-family: "m";
+	font-size: 10pt;
+}
+.aMsg .td4{
+	font-family: "m";
+	padding: 20px;
+}
+.aMsg button{
+	border: none;
+	background-color: transparent;
+	font-family: "m";
+	font-size: 14pt;
+	color : #FB8C00;
+}
+
+.snsReplyWriter{
+	font-family: "m";	color:#FFB300;
+	margin-left: 5px;	margin-right: 5px;
+}
+
+.snsL, .snsR {
+	font-size: 130pt;	font-weight: 900;
+	position: fixed;	top:40%;
+	color:#FFB300;		font-family: "m";
+}
+.snsL {
+	left:40px;
+}
+.snsR {
+	right:40px;
+}
+

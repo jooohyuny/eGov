@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="jQuery.js"></script>
+<script type="text/javascript">
+	// $(선택자).메소드 ...
+	// 선택자
+	//		JS내장객체를 포함한 변수명
+	//		"CSS선택자"
+	//		this : 콜백함수 부른 객체
+	// .parent() : 한 단계 부모 
+	// .closest("CSS선택자") : 상위중에 가장 가까운 그거
+	// .children()	: 한 단계 하위 전부 다
+	// .find("CSS선택자") : 하위중에 가장 가까운 그거
+	$(function(){
+		// button 9개가 같은 콜백함수에 연결되어 있는 상태
+		$("button").click(function(){
+			// 버튼 누르면 그 옆에 input 내용을 alert으로 
+			//	-> 버튼기준 한단계 위인 td에서 하위에 있는 input을 찾기 그 이후 입력값 출력
+			var input = $(this).parent().find("input")
+			alert(input.val());
+			
+			// 버튼 누르면 눌러진 버튼 배경색이 빨갛게
+			$(this).css("background-color", "red");
+		
+			// 눌러진 버튼이 소속된 td 배경색이 노랗게
+			$(this).parent().css("background-color", "yellow");
+		
+			// 눌러진 버튼이 소속된 table 가로를 1000px로
+			$(this).closest("table").css("width", "1000px");
+		});
+		
+		$("td").click(function(){
+			// td누르면 눌러진 td 배경색 초록으로
+			$(this).css("background-color", "#64FFDA");
+		
+			// 눌러진 td에 소속된 것들 배경색 파랑
+			$(this).children().css("background-color", "#BBDEFB");
+		
+			// 눌러진 td에 소속된 input만 높이를 100px로
+			$(this).find("input").css("height", "100px");
+		});
+		
+		
+	});
+</script>
+<style type="text/css">
+table{
+	padding: 15px;
+}
+td{
+	padding: 15px;
+}
+
+</style>
+</head>
+<body>
+	<table border="1">
+		<tr>
+			<td>
+				<input>
+				<button>버튼1</button>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<input>
+				<button>버튼2</button>
+			</td>
+		</tr>
+	</table>
+	<table border="1">
+		<tr>
+			<td>
+				<input>
+				<button>버튼3</button>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<input>
+				<button>버튼4</button>
+			</td>
+		</tr>
+	</table>	
+	<table border="1">	
+		<tr>
+			<td>
+				<input>
+				<button>버튼5</button>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<input>
+				<button>버튼6</button>
+			</td>
+		</tr>
+	
+	</table>
+</body>
+</html>

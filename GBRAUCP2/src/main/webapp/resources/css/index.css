@@ -1,0 +1,70 @@
+@charset "UTF-8";
+@font-face{
+	font-family: "scar";
+	src: url("scar.ttf");
+}
+::-webkit-scrollbar{
+	display: none;
+}
+a{
+	text-decoration: none;
+}
+body{
+	margin: 0px;	padding: 0px;
+	background-image: url("../img/bbb.jpg");
+	background-attachment: fixed;
+	background-size: cover;
+	background-position: center;
+}
+input{
+	outline: none;
+}
+#siteTitleArea{
+	position: fixed;	width: 100%; top: -50px;
+	transition :top 0.5s ease-out;	
+}
+#siteMenu{
+	height: 50px; 		color:white;
+}
+#siteTitleArea table{
+	width: 1200px;
+}
+#siteTitle{
+	height: 70px;
+}
+#siteTitle a{
+	font-family: "scar";
+	font-size: 25pt;
+	color:white;
+	text-shadow: 2px 2px 2px #B71C1C;
+}
+#siteContentArea{
+	margin-left: auto;
+	margin-right: auto;
+	padding-top:130px;
+	width: 1200px;
+	color:white;
+}
+#resultArea{
+	font-family: "scar";
+	font-size:13pt;
+	color:#B71C1C;
+	text-shadow: 2px 2px 2px white;
+}
+#menuTbl{
+	font-family: "scar";
+	font-size:13pt;
+	color:white;
+}
+#menuTbl img{
+	max-height: 40px;
+}
+#menuTbl a{
+	font-family: "scar";
+	font-size:13pt;
+	color:white;
+	border: none;
+	background-color: transparent;
+	text-shadow: 2px 2px 2px #B71C1C;
+	cursor: pointer;
+}

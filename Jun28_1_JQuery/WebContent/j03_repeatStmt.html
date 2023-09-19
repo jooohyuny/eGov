@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="jQuery.js"></script>
+<script type="text/javascript">
+	$(function(){
+		var css=[
+			{color:"red",bgColor:"blue"},
+			{color:"blue",bgColor:"yellow"},
+			{color:"white",bgColor:"black"}
+		];
+		
+		setTimeout(function(){
+			$("div").each(function(i,d){
+				$(d).css("color",css[i].color).css("background-color",css[i].bgColor);
+			
+			});
+		},2000);
+	});
+</script>
+<style type="text/css">
+div{
+	transition : all 1s ease-in;
+}
+</style>
+</head>
+<body>
+	<div>ㅋㅋㅋㅋ</div>
+	<div>ㅅㅅㅅㅅㅅ</div>
+	<div>ㄴㄴㄴㄴ</div>
+</body>
+</html>

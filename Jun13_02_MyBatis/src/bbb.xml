@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="coffeeMapper">
+	<delete id="delCoffee" parameterType="com.yun.jun132mb.main.Coffee">
+		delete from jun13_coffee where c_name=#{c_name}
+	</delete>
+	<delete id="delCoffeeByName" parameterType="com.yun.jun132mb.main.Coffee">
+		delete from jun13_coffee 
+		where c_name like '%'||#{c_name}||'%'
+	</delete>
+	<delete id="delCoffeeByPrice" parameterType="com.yun.jun132mb.main.Coffee">
+		delete from jun13_coffee where c_price &lt;= #{c_price} 
+	</delete>
+	<select id="getCoffee" resultType="com.yun.jun132mb.main.Coffee">
+		select * from jun13_coffee order by c_name
+	</select>
+	<insert id="regCoffee" parameterType="com.yun.jun132mb.main.Coffee">
+		insert into jun13_coffee values(#{c_name},#{c_price})
+	</insert>
+	<update id="updateCoffee" parameterType="com.yun.jun132mb.main.CoffeeUpdateValues">
+		update jun13_coffee 
+		set c_price =c_price- #{setValue} 
+		where c_price &gt;= #{whereValue}
+	</update>
+</mapper>

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>실시간 채팅</title>
+<style type="text/css">
+#loginTable{
+	width : 100%
+}
+img{
+	width: 500px; height : 600px;
+}
+table{
+	border-spacing: 10px;
+}
+.myMsg{
+	background-color: #FFF9C4; 
+	box-shadow: 3px 3px 3px #1565C0;
+	font-size : 12pt;  font-weight:800;
+	padding: 10px;	border-radius:10px;
+	text-shadow: :none; 
+}
+.yourMsg{
+	background-color: #BBDEFB; 
+	box-shadow: 3px 3px 3px #FFF9C4;
+	font-size : 12pt;  font-weight:800;
+	padding: 10px;	border-radius:10px;
+	text-shadow: :none; 
+}
+
+</style>
+<link rel="stylesheet" href="https://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.css" />
+<script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+<script src="https://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.js"></script>
+<script type="text/javascript" src="http://195.168.9.41:5674/socket.io/socket.io.js"></script>
+<script type="text/javascript">
+	
+	$(function(){
+		var socket = io.connect("http://195.168.9.41:5674");
+		var n;
+		$("#msg").keyup(function(e){
+			if (e.keyCode == 13) {
+				n = $("#nickname").val();
+				var m = $(this).val();
+				var msg = {nn : n, txt : m};
+				socket.emit("clientMsg",msg);
+				$(this).val("");
+			}
+		});
+		socket.on("serverMsg",function(m){
+			var br = $("<br>");	var br2 = $("<br>");
+			var who = "["+m.nn+"]"
+			var td1 = $("<td></td>").append(who,br,br2,m.txt);
+			var td2 = $("<td></td>").attr("style","width:20%;");
+			var td3 = $("<td></td>").attr("style","width:40%;");
+			var tr = $("<tr></tr>").append(td1,td2,td3);
+			if (n==m.nn) {
+				td1 = $(td1).attr("class","myMsg").attr("align","right");
+				tr = $("<tr></tr>").append(td3,td2,td1);
+			} else {
+				td1 = $(td1).attr("class","yourMsg");
+				tr = $("<tr></tr>").append(td1,td2,td3);
+			}
+			$("table").append(tr);
+			var htmlHeight = $(document).height();
+			$(window).scrollTop(htmlHeight);
+		});
+	});
+</script>
+</head>
+<body>
+	<div data-role="page" id="coverPage">
+		<div data-role="header" data-position="fixed" data-theme="b">
+			<h1>채팅</h1>
+		</div>
+		<div data-role="content">
+			<table id="loginTable">
+				<tr>
+					<td align="center">
+						<img src="messi_01.png">
+					</td>
+				</tr>
+				<tr>
+					<td align="center">
+						<input id="nickname" placeholder="대화명">
+						<a href="#mainPage" data-transition="flow" data-role="button">로그인</a>
+					</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+	<!-- --------------------------------------------------------------------------------------- -->
+	<div data-role="page" id="mainPage">
+		<div data-role="header" data-position="fixed" data-theme="b">
+			<a href="#coverPage" data-transition = "flow"data-icon="arrow-l">나가기</a>
+			<h1>채팅</h1>
+		</div>
+		<div data-role="content">
+			<table style="width: 100%;">
+			
+			</table>
+		</div>
+		<div data-role="footer" data-position="fixed" data-theme="e">
+			<input id="msg" placeholder="내용">
+		</div>
+	</div>
+</body>
+</html>

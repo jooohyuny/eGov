@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+canvas{
+	border : black solid 3px;
+}
+</style>
+<script type="text/javascript" src="jQuery.js"></script>
+<script type="text/javascript">
+	$(function(){
+		var paper = document.getElementById("cv")
+		var pen = paper.getContext("2d");
+		var ball = new Image();
+		var ballX = 200; 	var xSpd = 5;
+		var ballY = 100; 	var ySpd = 5;
+		var barX = 100;
+		ball.src = "ball.png";
+		ball.onload = function(){
+			var t = setInterval(function(){
+				pen.save();
+				pen.fillStyle = "rgba(0,0,0,0.07)";
+				pen.fillRect(0,0,400,600);
+				ballX += xSpd;
+				ballY += ySpd;
+				
+				if (ballX >= 370 || ballX <= 0) {
+					xSpd *= -1;
+				}
+				if (ballY <=0){
+					ySpd *= -1;
+				} 
+ 				if (ballY>=555 && ballX >=barX -15
+ 						&& ballX <=barX + 85) {
+					ySpd *= -1;
+				}
+ 				if (ballY>= 570) {
+					clearInterval(t);
+					alert("게임오버");
+				}
+				
+				pen.shadowBlur = 20;
+				pen.shadowColor = "red";
+				pen.drawImage(ball,ballX,ballY);
+
+				pen.shadowColor = "white";
+				pen.fillStyle = "#A1887F";
+				pen.fillRect(barX,585,100,15);
+				
+				pen.restore();
+			}, 10);
+		};
+		$("canvas").mousemove(function(e){
+			// $("canvas").offset().left;
+			barX= e.pageX-58; // 기본여백 8에 barX길이의 절반을 뺀다
+			if (barX>=358 || barX<=42) {
+				return false;
+			}
+		});
+	});
+</script>
+</head>
+<body>
+	<canvas id="cv" width="400px" height="600px"></canvas>
+</body>
+</html>

@@ -1,0 +1,89 @@
+@charset "UTF-8";
+#loginTbl{
+	height: 50px;
+}
+#loginTbl input{
+	border: white solid 3px;
+	height:30px;
+	background-color: #00000033;
+	font-family: "scar";
+	color:white;
+	font-size: 13pt;
+	width: 200px;
+	text-align: center;
+}
+#loginTbl input::placeholder{
+	color:white;
+}
+#loginTbl button, #loginTbl a{
+	border: none;
+	background-color: transparent;
+	font-family: "scar";
+	color:white;
+	font-size: 13pt;
+	cursor: pointer;
+	text-shadow: 2px 2px 2px #B71C1C;
+}
+#memberJoinTbl{
+	margin-top:30px;
+	width:50%;
+	background-color: #00000099;
+	font-family: "scar";
+	font-size: 14pt;
+}
+#memberJoinTbl th{
+	font-size: 25pt;
+	padding: 20px;
+	text-shadow: 2px 2px 2px #B71C1C;
+}
+#memberJoinTbl .textType{
+	border: #FFFFFF11 solid 2px;
+	width: 90%;
+	height: 45px;
+	background-color: transparent;
+	margin: 5px;
+	font-family: "scar";
+	font-size: 14pt;
+	color:white;
+	padding-left: 10px;
+}
+#memberJoinTbl .jumin1{
+	border: #FFFFFF11 solid 2px;
+	width: 100px;
+	height: 45px;
+	background-color: transparent;
+	margin: 5px;
+	font-family: "scar";
+	font-size: 14pt;
+	color:white;
+	text-align: center;
+}
+#memberJoinTbl .jumin2{
+	border: #FFFFFF11 solid 2px;
+	width: 15px;
+	height: 45px;
+	background-color: transparent;
+	margin: 5px;
+	font-family: "scar";
+	font-size: 14pt;
+	color:white;
+	text-align: center;
+}
+#memberJoinTbl .textType::placeholder, #memberJoinTbl .jumin1::placeholder, #memberJoinTbl .jumin2::placeholder{
+	color:white;
+}
+#memberJoinTbl button{
+	border: none;
+	width: 40%;
+	height: 45px;
+	background-color: transparent;
+	margin: 15px;
+	font-family: "scar";
+	font-size: 20pt;
+	color:white;
+	cursor: pointer;
+	text-shadow: 2px 2px 2px #B71C1C;
+}
+#memberJoinTbl img{
+	max-width: 40%;
+}

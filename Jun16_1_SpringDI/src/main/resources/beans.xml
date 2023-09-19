@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.2.xsd">
+
+	<bean id="c" class="com.yun.jun161sdi.main.Company">
+		<constructor-arg value="오리온"></constructor-arg>
+		<constructor-arg value="수원"></constructor-arg>
+		<constructor-arg value="100"></constructor-arg>
+	</bean>
+	<bean id="s1" class="com.yun.jun161sdi.snack.Snack">
+		<property name="name" value="초코파이"></property>
+		<property name="price" value="5000"></property>
+		
+		<property name="maker" ref="c"></property>
+		
+		<property name="material">
+			<array value-type="java.lang.String">
+				<value>카카오</value>
+				<value>버터</value>
+				<value>마시멜로</value>
+			</array>			
+		</property>
+		<property name="characteristics">
+			<list value-type="java.lang.String">
+				<value>잘 구워서 바삭</value>
+				<value>과일맛 나고</value>
+			</list>
+		</property>
+		<property name="nutrition">
+			<map key-type="java.lang.String" value-type="java.lang.Double">
+				<entry key="탄수화물" value="10"></entry>
+				<entry key="지방" value="20.5"></entry>
+			</map>
+		</property>
+	</bean>
+	
+</beans>

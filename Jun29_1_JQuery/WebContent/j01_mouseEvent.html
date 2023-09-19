@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+div{
+	width:200px; height:200px; border: black solid 2px;
+}
+img{
+	position: fixed;
+}
+table{
+	position: fixed; top: -100px;	left: -100px; opacity:0px;
+	transition: opacity 0.3s ease-out;
+}
+</style>
+<script type="text/javascript" src="jQuery.js"></script>
+<script type="text/javascript">
+	// jQuery에서 이벤트에 연결되는 콜백함수의 첫번째 파라메터로 이벤트객체
+	// 원래 뭔가 기능이 있는 이벤트에 연결하는 콜백함수
+	// 에서 return true : 원래 기능 살리기
+	// 에서 return false : 원래 기능 없애기
+	
+	// 버튼의 클릭이벤트 : 원래 아무것도 없음
+	// v 인풋의 키보드이벤트 : 글자적혀야 함
+	$(function(){
+		// click, dbclick
+		$("div").mousedown(function(e){
+			// alert(JSON.stringify(e));
+			$("#h11").text("mousedown : " + e.button);
+		});
+		$("div").mouseup(function(e){
+			$("#h11").text("mouseup : " + e.button);
+		});
+		//-------------------------------------
+		$("div").mouseenter(function(e){
+			$("#h11").text("mouseenter");
+		});
+		// div에서 조금이라도 움직일때마다
+		$("div").mousemove(function(e){
+			// e.pageX, e.pageY : html기준
+			$("#h11").text("mousemove");
+			$("#h12").text(e.pageX + "," + e.pageY);
+			
+		});
+		$("div").mouseleave(function(e){
+			$("#h11").text("mouseleave");
+		});
+		//-------------------------------------
+		$("html").mousemove(function(e){
+			var l = e.pageX +10;
+			var t = e.pageY + 10;
+			$("img").css("top", + t +"px");
+			$("img").css("left", + l +"px");
+		});
+		//-------------------------------------
+		// (우클릭해서) 브라우저 팝업메뉴 나올때
+		$(document).contextmenu(function(){
+			return false;
+		});
+		$("html").mouseup(function(e){
+			if(e.button==2){
+				var t = e.pageY + 5;
+				var l = e.pageX + 5;
+				$("table").css("top", t + "px");
+				$("table").css("left", l + "px");
+				$("table").css("opacity","1");
+				setTimeout(function(){
+					$("table").css("opacity","0");
+					setTimeout(function(){
+						$("table").css("top", "-100px");
+						$("table").css("left", "-100px");
+					},300);
+				},3000);
+				
+			}
+		});
+		
+		
+		
+	});
+</script>
+</head>
+<body>
+	<table border="1">
+		<tr><td><a href="https://www.naver.com">네이버로</a></td></tr>
+		<tr><td><a href="https://www.google.com">구글로</a></td></tr>
+		<tr><td><a href="https://www.daum.net">다음으로</a></td></tr>
+	</table>
+	<img src="kjh0626.png">
+	<div></div>
+	<h1 id="h11">ㅋ</h1>
+	<h1 id="h12">ㅋ</h1>
+</body>
+</html>
+
+
+
+
+
+

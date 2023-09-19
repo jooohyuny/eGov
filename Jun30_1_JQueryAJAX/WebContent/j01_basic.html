@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="jQuery.js"></script>
+<script type="text/javascript">
+	$(function(){
+		// AJAX (Asynchronous Javascript And Xml) : 
+		//		자바스크립트로 비동기식 통신을 해서 XML 파싱하는것
+		//		브라우저의 동일 출처 정책 -> 외부 데이터를 사용 불가
+		
+		// $.ajax({
+		//		uri = "프로토콜:// ... /주소",
+		//		data : {"param명:" 값, "param명:" 값, ...},
+		//		success : function (받은거){
+		//			...	
+		//		}
+		// });
+		
+		$("button").click(function(){
+			$.ajax({
+				uri : "https://www.kma.go.kr/wid/queryDFSRSS.jsp",
+				data : {zone :1111061500},
+				success : function(zxc){
+					alert(zxc);
+				}
+			});
+		});
+	
+	});
+</script>
+</head>
+<body>
+	<button>버튼</button>
+</body>
+</html>

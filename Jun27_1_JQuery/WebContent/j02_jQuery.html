@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="jQuery.js"></script>
+
+<script type="text/javascript">
+	// yunVaildChecker.js : 유효성검사 라이브러리 -> 유효성검사를 간편하게
+	// jQuery.js : JavaScript문법 라이브러리
+	// JavaScript를 쓰는 이유 : 웹페이지 이벤트처리하려고
+	// callback함수 : 어떤 이벤트에 연결되어있어서
+	// 그 이벤트 발생하면 자동호출되는 함수
+	
+	/*
+	$(document).read(function(){
+		alert("ㅋ");
+	}); // 사실상 body의 onload -> jQuery의 main -> 매번 쓸거고
+	*/
+	
+	// 문법
+	// jQuery(선택자).이벤트(callback함수);
+	//		jQuery는 $로 줄여쓰기 가능
+	//			다른 라이브러리도 $쓰는 중이면 그냥 jQuery써야된다
+	//		선택자
+	//			기존 JS객체
+	//			"CSS선택자"
+	//		이벤트
+	//			원래 JS에서 onXXX... -> XXX부분만
+	$(function(){
+		var iiInput = $("#ii");
+		
+		$("button").click(function(){
+			alert(iiInput.val());
+		});
+	});
+</script>
+</head>
+<body>
+	<input id="ii">
+	<button>버튼</button>
+</body>
+</html>

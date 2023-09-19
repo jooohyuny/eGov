@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+.aaa{
+	background-color: #D1C4E9;
+	color:#004D40;
+	font-size: 25pt;
+}
+</style>
+<script type="text/javascript" src="jQuery.js"></script>
+<script type="text/javascript">
+	// <태그명 속성명 ="값" 속성명="값" ... >
+	// 텍스트
+	// </태그명>
+	$(function() {
+		$("#b1").click(function(){
+			// 속성 수정
+			// $(선택자).attr("속성명","값");
+			$("a").attr("href", "https://www.google.com");
+		});
+		$("#b2").click(function(){
+			// 속성 추가
+			$("a").attr("class","aaa");
+		});
+		$("#b3").click(function(){
+			// 속성 삭제
+			// $("a").attr("href","");
+			$("a").removeAttr("href");
+		});
+		$("#b4").click(function(){
+			// getter방식
+			var aHref = $("a").attr("href");
+			alert(aHref);
+		});
+		
+		var i = 0;
+		setInterval(function(){
+			i++;
+			if (i==6) {
+				i = 1;
+			}
+			$("img").attr("src","messi_0"+i+".png");
+		},300);
+		
+		
+	});
+</script>
+</head>
+<body>
+	<img style="maxwidth:150px; max-height: 150px;">
+	<hr>
+	<a href="https://www.naver.com">네이버로</a>
+	<hr>
+	<button id="b1">버튼1</button>
+	<button id="b2">버튼2</button>
+	<button id="b3">버튼3</button>
+	<button id="b4">버튼4</button>
+</body>
+</html>

@@ -1,0 +1,198 @@
+@charset "UTF-8";
+@font-face{
+	font-family: "scar";
+	src: url("scar.ttf");
+}
+#snsControlArea {
+	position: fixed;
+	left: 0px;
+	bottom: 10px;
+	width: 120px;
+	transition: all 0.3s ease-out;
+}
+#snsControlAreaHandle{
+	width : 40px;
+	cursor: pointer;
+}
+
+#snsSearchArea1{
+	background-color: #00000099;
+	border-left: #B2EBF2 solid 3px;
+	border-top: #B2EBF2 solid 3px;
+	border-bottom: #B2EBF2 solid 3px;
+}
+#snsSearchArea2{
+	background-color: #00000099;
+	border-right: #B2EBF2 solid 3px;
+	border-top: #B2EBF2 solid 3px;
+	border-bottom: #B2EBF2 solid 3px;
+}
+
+#snsSearchArea1 .textType{
+	border : green;
+	background-color : transparent; 
+	width: 440px;
+	height: 35px;
+	font-family: "scar";
+	font-size: 13pt;
+	color: white;
+}
+
+
+#snsWriteArea, #snsSearchArea{
+	background-color: #e9d1df;
+	width: 500px;
+	border: white solid 3px;
+	font-family : "scar";
+}
+
+#snsWriteArea .textType {
+	width: 400px;
+	height: 30px;
+	border : green;
+	font-family: "scar";
+	
+}
+#snsWriteArea .textArea {
+	width: 400px;
+	height: 130px;
+	border : green;
+	font-family: "scar";
+}
+.aSNSMsg{
+	width: 80%;
+	background-color: #00000099;
+	font-family: "scar";
+	margin: 20px;
+}
+.aSNSMsg .writeTd{
+	width: 20px;
+	right:0px;
+}
+.aSNSMsg .imgTd{
+	width: 20px;
+}
+.aSNSMsg .writeImg{
+	max-width: 50px;
+}
+.aSNSMsg .writerTd{
+	font-size: 17pt;
+	height: 40px;
+	padding-left: 10px;
+}
+.aSNSMsg .dateTd{
+	font-size: 11pt;
+	height: 30px;
+	padding-right: 10px;
+	
+}
+.aSNSMsg .txtTd{
+	
+	padding: 20px;
+	font-size : 11pt;
+}
+
+.aSNSMsg .replyTd{
+	padding: 20px; font-size: 10pt;
+}
+
+.aSNSMsg .replyTd .writer{
+	margin: 10px;
+}
+.aSNSMsg .replyTd .date{
+	font-size:9pt;
+}
+.aSNSMsg .replyTd input{
+	border:none;	font-size : 11pt;
+	background-color: transparent;
+	width: 700px;
+	color:white;
+	height: 30px;
+	font-family: "scar"
+}
+.aSNSMsg .replyTd button{
+	border:none;	
+	background-color: transparent;
+	font-family: "scar"
+}
+
+
+
+
+
+
+.aSNSMsg .btnImg{
+	width: 30px;	margin: 5px;
+}
+
+#snsL{
+	position: fixed;
+	top:0px;
+	left:0px;
+	width:100px;
+	height:100%;
+}
+#snsR{
+	position: fixed;
+	top:0px;
+	right:0px;
+	width:100px;
+	height:100%;
+}
+#snsL:hover, #snsR:hover{
+	background-color: #E64A19;
+}
+
+
+#blackArea{
+	transition: all 1s ease-out;
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	left:-100%;
+	top:-100%;
+	background-color : #000000AA;
+}
+#snsRewriteArea{
+	background-color: #00000099;
+	width: 650px;
+	height : 450px;
+	color : white
+	border: white solid 3px;
+	font-family : "scar";
+}
+
+#snsRewriteArea .textArea {
+	width: 600px;
+	height: 470px;
+	left :10px;
+	background-color: #00000099;
+	color: white;
+	border : green solid 2px;
+	font-family: "scar";
+}
+#snsRewriteArea .rewriteImg {
+	background-color: white;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

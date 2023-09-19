@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+div{
+	width: 300px;	height: 300px;
+	border: red solid 3px;
+}
+</style>
+<script type="text/javascript" src="jQuery.js"></script>
+<script type="text/javascript">
+	// <태그명 속성명 ="값" 속성명="값" ... >
+	// 텍스트
+	// </태그명>
+	$(function() {
+		$("#b1").click(function(){
+			// <marquee behavior="alternate">ㅋㅋㅋ</marquee>
+
+			// $("CSS선택자") : 현재 존재하는 DOM객체 선택
+			// $("정식DOM객체") :없는 DOM객체를 만들기
+			var m = $("<marquee></marquee>").attr("behavior","alternate").text("ㅎㅎㅎ");
+			// 객체 배치
+			// $(선택자).append(객체); -> 뒤에 이어서 붙이기
+			// $(선택자).prepend(객체); -> 앞에 붙이기 (게시판같은데 자주쓰임)
+			// $("div").append(m);
+			$("div").prepend(m);
+		});
+		$("#b2").click(function(){
+			// DOM객체 삭제하기
+			// $(선택자).remove();
+			// $(선택자).empty();
+			// $("div").remove();
+			$("div").empty();
+		});
+		
+	});
+</script>
+</head>
+<body>
+	<div>
+	</div>
+	<hr>
+	<button id="b1">버튼1</button>
+	<button id="b2">버튼2</button>
+	<button id="b3">버튼3</button>
+</body>
+</html>

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="snsMapper">
+	<delete id="delete" parameterType="com.yun.gbraucp.sns.SNSMsg">
+		delete from yunwebproject_sns where ys_no=#{ys_no}	
+	</delete>
+	
+	<select id="get" 
+	parameterType="com.yun.gbraucp.sns.SNSSelector"
+	resultType="com.yun.gbraucp.sns.SNSMsg">
+		<!--  join은 최대한 안시키는게 좋으니깐 아래에 있는것처럼
+		select *
+		from (
+			select rownum as rn, ys_no, ys_writer, ys_txt, ys_date, ym_photo
+			from(
+				select ys_no, ys_writer, ys_txt, ys_date, ym_photo
+				from yunwebproject_sns, yunwebproject_member
+				where ys_writer = ym_id and ys_txt like '%'||#{search}||'%'
+				order by ys_date desc
+			)
+		)
+		where rn &gt;= #{start} and rn &lt;=#{end}
+		 -->
+		select ys_no,ym_id,ym_photo,ys_txt,ys_date,ys_writer
+		from (
+			select *
+			from (
+				select rownum as rn, ys_no,ys_writer,ys_txt,ys_date
+				from(
+					select *
+					from yunwebproject_sns
+					where ys_txt like '%'||#{search}||'%'
+					order by ys_date desc
+				)
+			)
+		where rn &gt;= #{start} and rn &lt;=#{end}
+		),(
+		select ym_id, ym_photo
+		from yunwebproject_member
+		where ym_id in(
+			select ys_writer
+			from(
+				select rownum as rn, ys_no, ys_writer,ys_txt,ys_date
+				from(
+					select *
+					from yunwebproject_sns
+					where ys_txt like '%'||#{search}||'%'
+					order by ys_date desc
+				)
+			)
+			where rn &gt;= #{start} and rn &lt;=#{end}
+			)
+		)
+		where ys_writer = ym_id
+		order by ys_date desc
+		 
+	</select>
+	<select id="getMsgCount" 
+	parameterType="com.yun.gbraucp.sns.SNSSelector"
+	resultType="java.lang.Integer">
+		select count(*) 
+		from yunwebproject_sns
+		where ys_txt like '%'||#{search}||'%'	
+	</select>
+	<insert id="write" parameterType="com.yun.gbraucp.sns.SNSMsg">
+		insert into yunwebproject_sns
+		values(yunwebproject_sns_seq.nextval, #{ys_writer}, #{ys_txt}, sysdate)
+	</insert>
+</mapper>  
